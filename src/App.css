@@ -7,6 +7,24 @@
   pointer-events: none;
 }
 
+.App-nav {
+  background-color: black;
+  background-color: #7f53ac;
+  background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
+  height: 3em;
+  display: flex;
+  flex-direction: row;
+  padding-left: 1em;
+  padding-top: 1em;
+}
+
+.App-navLink {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding-right: 1em;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-float infinite 3s ease-in-out;

@@ -1,0 +1,35 @@
+:root {
+  --row-height: 250px;
+}
+
+.products {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: var(--row-height);
+  grid-gap: 1em;
+  padding: 0;
+  margin-right: 2em;
+  margin-left: 2.5em;
+}
+
+.products li {
+  display: inline-block;
+  padding: 1em;
+  text-align: left;
+  border: 3px solid #333;
+}
+
+.product {
+  display: flex;
+  flex-direction: row;
+}
+
+.product > div {
+  overflow-y: auto;
+  max-height: calc(var(--row-height) - 50px);
+}
+.product img {
+  max-height: calc(var(--row-height) - 50px);
+  margin-right: 50px;
+}

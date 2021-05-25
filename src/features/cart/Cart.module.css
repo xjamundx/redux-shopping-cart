@@ -1,0 +1,52 @@
+.table {
+  width: 600px;
+  background-color: #f1f1f1;
+  border-radius: 1em;
+  margin: 0 auto;
+  padding: 1em;
+  border-spacing: 5px;
+  margin-bottom: 2em;
+}
+
+.table thead {
+  font-weight: bold;
+}
+
+.table thead td {
+  padding-bottom: 0.5em;
+}
+
+.table tbody td {
+  padding: 0.5em;
+  background-color: white;
+}
+
+.table tfoot td {
+  font-weight: bold;
+}
+
+.total {
+  color: green;
+}
+
+.button {
+  font-size: 24px;
+}
+
+.input {
+  font-size: 1em;
+  width: 3em;
+}
+
+.cartLink {
+  margin-left: auto;
+}
+
+.cartLinkContents {
+  background-color: white;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  font-weight: normal;
+  font-size: 0.8rem;
+  color: #333;
+}
