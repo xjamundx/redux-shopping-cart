@@ -23,6 +23,8 @@
 .product {
   display: flex;
   flex-direction: row;
+  overflow: hidden;
+  height: var(--row-height);
 }
 
 .product > div {
@@ -30,6 +32,15 @@
   max-height: calc(var(--row-height) - 50px);
 }
 .product img {
-  max-height: calc(var(--row-height) - 50px);
+  max-height: calc(var(--row-height) - 4em);
   margin-right: 50px;
+}
+
+.product figcaption {
+  overflow-y: hidden;
+  height: 1em;
+}
+
+.caption {
+  font-size: 0.6em;
 }

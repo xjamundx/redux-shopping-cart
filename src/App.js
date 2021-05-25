@@ -40,7 +40,7 @@ function Home() {
       <h1>Welcome to the Store!</h1>
       <figure>
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/5/50/Browns-Big-Store-Longford-20070421-031.jpg"
+          src="/store.jpg"
           alt="A large old store that says 1889 THE BIG STORE"
           width="800"
         />
