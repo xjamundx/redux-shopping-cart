@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import styles from "./Products.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { receiveNewProducts } from "./productsSlice";
+import { receivedNewProducts } from "./productsSlice";
 import { addToCart } from "../cart/cartSlice";
 
 export default function Products() {
@@ -10,7 +10,7 @@ export default function Products() {
     fetch("/products.json")
       .then((products) => products.json())
       .then((products) => {
-        dispatch(receiveNewProducts(products));
+        dispatch(receivedNewProducts(products));
       });
   }, [dispatch]);
   const products = useSelector((state) => state.products.products);
