@@ -1,45 +1,35 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React, { useState } from "react";
+import styles from "./App.module.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div className={styles.app}>
+      <nav className={styles.nav}>
+        <a className={styles.navLink} href="/">
+          Home
+        </a>
+        <a className={styles.navLink} href="/products">
+          Products
+        </a>
+        <a className={styles.navLink} href="/cart">
+          Cart
+        </a>
+      </nav>
+      <main className="page">
+        <h1>Welcome to the Store!</h1>
+        <figure>
+          <img
+            src="/store.jpg"
+            alt="A large old store that says 1889 THE BIG STORE"
+            width="800"
+          />
+          <figcaption>Gary Houston, CC0, via Wikimedia Commons</figcaption>
+        </figure>
+      </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
