@@ -1,11 +1,16 @@
-// import { Link } from "react-router-dom";
 import React from "react";
-import styles from "./Cart.module.css";
+import { Link } from "react-router-dom";
+import { useAppSelector } from "../../app/hooks";
+import { getTotal, getMemoizedTotal } from "./cartSlice";
+import styles from "./CartLink.module.css";
 
-export default function CartLink() {
+export function CartLink() {
+  const numItems = useAppSelector(getMemoizedTotal);
   return (
-    <a className={`App-navLink ${styles.cartLink}`} href="/cart">
-      <span className={styles.cartLinkContents}>🛒&nbsp;&nbsp;Cart</span>
-    </a>
+    <Link className={styles.link} to="/cart">
+      <span className={styles.text}>
+        🛒&nbsp;&nbsp;{numItems ? numItems : "Cart"}
+      </span>
+    </Link>
   );
 }
