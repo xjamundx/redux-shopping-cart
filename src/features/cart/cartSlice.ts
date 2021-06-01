@@ -9,7 +9,7 @@ import { RootState, AppDispatch } from "../../app/store";
 
 export type CartItems = { [id: string]: number };
 
-interface CartState {
+export interface CartState {
   items: CartItems;
   checkoutState: "LOADING" | "READY" | "ERROR";
   errorMessage: string;
@@ -77,7 +77,6 @@ const cartSlice = createSlice({
 });
 
 export const getTotal = (state: RootState) => {
-  console.log("checking for totals");
   let total = 0;
   for (let id in state.cart.items) {
     total += state.cart.items[id];
@@ -88,7 +87,6 @@ export const getTotal = (state: RootState) => {
 export const getMemoizedTotal = createSelector(
   (state: RootState) => state.cart.items,
   (items) => {
-    console.log("checking for memoized totals");
     let total = 0;
     for (let id in items) {
       total += items[id];
