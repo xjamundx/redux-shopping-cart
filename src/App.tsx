@@ -34,7 +34,7 @@ function App() {
   );
 }
 
-function Home() {
+export function Home() {
   return (
     <main className="page">
       <h1>Welcome to the Store!</h1>
