@@ -1,0 +1,19 @@
+.header {
+  background-color: #7f53ac;
+  background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
+  height: 2em;
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+}
+
+.link {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding-right: 1em;
+}
+
+:global .page {
+  text-align: center;
+}

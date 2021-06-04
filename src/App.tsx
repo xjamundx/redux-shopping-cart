@@ -1,14 +1,14 @@
 import React from 'react'
-import './App.css'
+import styles from './App.module.css'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className={styles.app}>
+      <header className={styles.header}>
         <nav>
-          <a href="/">Home</a>
-          <a href="/products">Products</a>
-          <a href="/cart">Cart</a>
+          <a href="/" className={styles.link}>Home</a>
+          <a href="/products" className={styles.link}>Products</a>
+          <a href="/cart" className={styles.link}>Cart</a>
         </nav>
       </header>
       <main className="page">
