@@ -4,9 +4,24 @@ import cartReducer, {
   addToCart,
   removeFromCart,
   getTotal,
+  checkout,
+  checkoutAction,
   getMemoizedTotal,
 } from "./cartSlice";
 import { RootState } from "../../app/store";
+
+jest.mock("../../app/api", () => {
+  return {
+    async getProducts() {
+      return [];
+    },
+    async checkout(items = {}) {
+      const empty = Object.keys(items).length === 0;
+      if (empty) throw new Error("Must include cart items");
+      return { success: true };
+    },
+  };
+});
 
 describe("Cart Reducer", () => {
   it("should return initial state when sent an empty action", () => {
@@ -61,6 +76,56 @@ describe("Cart Reducer", () => {
       abc: 2,
       def: 7,
       ghi: 4,
+    });
+  });
+  describe("extra reducers", () => {
+    it("should respond to pending checkout action", () => {
+      const initialState: CartState = {
+        checkoutState: "READY",
+        errorMessage: "",
+        items: {},
+      };
+      const action = { type: checkout.pending.type };
+      const state = cartReducer(initialState, action);
+      expect(state.checkoutState).toEqual("LOADING");
+    });
+    it("should respond to fulfilled checkout action with an error", () => {
+      const initialState: CartState = {
+        checkoutState: "READY",
+        errorMessage: "",
+        items: {},
+      };
+      const action = {
+        type: checkout.fulfilled.type,
+        payload: { success: false },
+      };
+      const state = cartReducer(initialState, action);
+      expect(state.checkoutState).toEqual("ERROR");
+    });
+    it("should respond to fulfilled checkout action with success", () => {
+      const initialState: CartState = {
+        checkoutState: "READY",
+        errorMessage: "",
+        items: { abc: 123 },
+      };
+      const action = {
+        type: checkout.fulfilled.type,
+        payload: { success: true },
+      };
+      const state = cartReducer(initialState, action);
+      expect(state.checkoutState).toEqual("READY");
+      expect(state.items).toEqual({});
+    });
+    it("should respond to rejected checkout action", () => {
+      const initialState: CartState = {
+        checkoutState: "READY",
+        errorMessage: "",
+        items: { abc: 123 },
+      };
+      const action = { type: checkout.rejected.type, error: new Error("what") };
+      const state = cartReducer(initialState, action);
+      expect(state.checkoutState).toEqual("ERROR");
+      expect(state.errorMessage).toEqual("what");
     });
   });
 });
@@ -147,6 +212,81 @@ describe("selectors", () => {
       result = getMemoizedTotal({ cart } as RootState);
       expect(result).toEqual(19);
       expect(getMemoizedTotal.recomputations()).toEqual(2);
+    });
+  });
+});
+
+describe("thunks", () => {
+  describe("checkoutAction()", () => {
+    it("should dispatch two actions on failure", async () => {
+      const thunk = checkoutAction();
+      const dispatch = jest.fn();
+      const state = {
+        cart: {
+          items: {},
+        },
+      } as RootState;
+      await thunk(dispatch, () => state);
+      expect(dispatch).toHaveBeenCalledTimes(2);
+      expect(dispatch.mock.calls[0]).toEqual([
+        {
+          type: "cart/checkout/pending",
+        },
+      ]);
+      expect(dispatch.mock.calls[1][0].type).toEqual("cart/checkout/rejected");
+      // expect(dispatch).toHaveBeenCalledWith([{}, {}])
+      // expect(dispatch).toHaveBeenCalledWith([
+      //   { type: "cart/checkout/pending" },
+      //   { type: "cart/checkout/rejected" },
+      // ]);
+    });
+    it("should dispatch two actions on success", async () => {
+      const thunk = checkoutAction();
+      const dispatch = jest.fn();
+      const state = {
+        cart: {
+          checkoutState: "READY",
+          errorMessage: "",
+          items: { a: 1 },
+        } as CartState,
+      } as RootState;
+      await thunk(dispatch, () => state);
+      expect(dispatch.mock.calls.map((call) => call[0].type)).toEqual([
+        "cart/checkout/pending",
+        "cart/checkout/fulfilled",
+      ]);
+    });
+  });
+  describe("checkout()", () => {
+    it("should dispatch two actions on failure", async () => {
+      const thunk = checkout();
+      const dispatch = jest.fn();
+      const state = {
+        cart: {
+          items: {},
+        },
+      } as RootState;
+      await thunk(dispatch, () => state, {});
+      expect(dispatch.mock.calls.map((call) => call[0].type)).toEqual([
+        "cart/checkout/pending",
+        "cart/checkout/rejected",
+      ]);
+    });
+    it("should dispatch two actions on success", async () => {
+      const thunk = checkout();
+      const dispatch = jest.fn();
+      const state = {
+        cart: {
+          checkoutState: "READY",
+          errorMessage: "",
+          items: { a: 1 },
+        } as CartState,
+      } as RootState;
+      await thunk(dispatch, () => state, {});
+      expect(dispatch.mock.calls.map((call) => call[0].type)).toEqual([
+        "cart/checkout/pending",
+        "cart/checkout/fulfilled",
+      ]);
     });
   });
 });
