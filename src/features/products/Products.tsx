@@ -1,11 +1,21 @@
 import React, { useEffect, useState, } from "react";
 
+export interface Product {
+    id: string;
+    name: string;
+    price: number;
+    description: string;
+    imageURL: string;
+    imageAlt: string;
+    imageCredit: string;
+}
+
 export function Products() {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<Product[]>([]);
     useEffect(() => {
         fetch("/products.json")
             .then(result => result.json())
-            .then((products) => {
+            .then((products: Product[]) => {
                 setProducts(products)
             });
     }, []);
