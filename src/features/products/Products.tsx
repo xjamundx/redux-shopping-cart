@@ -1,4 +1,5 @@
 import React, { useEffect, useState, } from "react";
+import styles from "./Products.module.css";
 
 export interface Product {
     id: string;
@@ -22,9 +23,24 @@ export function Products() {
     return (
         <main className="page">
             <h1>Products</h1>
-            <ul>
+            <ul className={styles.products}>
                 {products.map(product => (
-                    <li>{product.name}</li>
+                    <li key={product.id}>
+                        <article className={styles.product}>
+                            <figure>
+                                <img src={product.imageURL} alt={product.imageAlt} />
+                                <figcaption className={styles.caption}>
+                                    {product.imageCredit}
+                                </figcaption>
+                            </figure>
+                            <div>
+                                <h1>{product.name}</h1>
+                                <p>{product.description}</p>
+                                <p>${product.price}</p>
+                                <button>Add to Cart 🛒</button>
+                            </div>
+                        </article>
+                    </li>
                 ))}
             </ul>
         </main>

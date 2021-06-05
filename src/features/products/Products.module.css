@@ -1,0 +1,28 @@
+.products {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+    padding: 0;
+    margin: 2em;
+}
+
+.products li {
+    padding: 1em;
+    text-align: left;
+    border: 3px solid #333;
+}
+
+.product {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.product img {
+    height: 200px;
+}
+
+.caption {
+    font-size: 0.6em;
+}
