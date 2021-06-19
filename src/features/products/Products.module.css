@@ -7,21 +7,16 @@
   margin: 2em;
 }
 
-.products li {
-  padding: 1em;
-  text-align: left;
-  border: 3px solid #333;
-}
-
 .product {
   display: flex;
   flex-direction: row;
+  text-align: left;
+  border: 3px solid #333;
   overflow: hidden;
 }
 
 .product img {
   width: 100%;
-  /* height: 200px; */
 }
 
 .caption {
