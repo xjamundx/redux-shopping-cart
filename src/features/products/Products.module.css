@@ -8,10 +8,10 @@
 }
 
 .product {
-  display: flex;
-  flex-direction: row;
   text-align: left;
   border: 3px solid #333;
+  display: flex;
+  flex-direction: row;
   overflow: hidden;
 }
 
