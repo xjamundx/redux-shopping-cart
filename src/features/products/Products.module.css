@@ -7,9 +7,13 @@
   margin: 2em;
 }
 
-.product {
-  text-align: left;
+.products li {
   border: 3px solid #333;
+  text-align: left;
+  padding-right: 1em;
+}
+
+.product {
   display: flex;
   flex-direction: row;
   overflow: hidden;

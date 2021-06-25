@@ -7,6 +7,10 @@
   padding: 1em;
 }
 
+.header > nav {
+  display: flex;
+}
+
 .link {
   color: white;
   font-weight: bold;
