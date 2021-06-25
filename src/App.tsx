@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Products } from "./features/products/Products";
+import { CartLink } from "./features/cart/CartLink";
 import styles from "./App.module.css";
 
 function App() {
@@ -9,45 +10,39 @@ function App() {
       <div className={styles.app}>
         <header className={styles.header}>
           <nav>
-            <Link to="/" className={styles.link}>
+            <Link className={styles.navLink} to="/">
               Home
             </Link>
-            <Link to="/products" className={styles.link}>
+            <Link className={styles.navLink} to="/products">
               Products
             </Link>
-            <Link to="/cart" className={styles.link}>
-              Cart
-            </Link>
+            <CartLink />
           </nav>
         </header>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/products">
-            <Products />
-          </Route>
-          <Route path="/cart">Cart</Route>
-        </Switch>
       </div>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/products">
+          <Products />
+        </Route>
+        <Route path="/cart">Cart</Route>
+      </Switch>
     </Router>
   );
 }
+
+export default App;
 
 function Home() {
   return (
     <main className="page">
       <h1>Welcome to the Store</h1>
       <figure>
-        <img
-          src="https://github.com/xjamundx/redux-shopping-cart/blob/main/public/store.jpg?raw=true"
-          alt="A large old storefront that says 1889 the big store"
-          width="800"
-        />
+        <img src="/store.jpg" alt="A large old storefront" width="800" />
         <figcaption>Gary Houston, CC0, via Wikimedia Commons</figcaption>
       </figure>
     </main>
   );
 }
-
-export default App;
