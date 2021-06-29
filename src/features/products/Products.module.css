@@ -10,13 +10,17 @@
 .products li {
   border: 3px solid #333;
   text-align: left;
-  padding-right: 1em;
+  padding: 1em;
 }
 
 .product {
   display: flex;
   flex-direction: row;
   overflow: hidden;
+}
+
+.product figure {
+  margin: 1em;
 }
 
 .product img {

@@ -1,0 +1,44 @@
+.table {
+  width: 600px;
+  background-color: #f1f1f1;
+  margin: 0 auto;
+  border-radius: 1em;
+  padding: 1em;
+  border-spacing: 5px;
+  margin-bottom: 2em;
+}
+
+.table tbody td {
+  padding: 0.5em;
+  background-color: white;
+}
+
+.table tfoot td {
+  font-weight: bold;
+}
+
+.checkoutError {
+  border: 2px solid red;
+}
+
+.checkoutLoading {
+  opacity: 0.2;
+}
+
+.total {
+  color: green;
+}
+
+.button {
+  font-size: 24px;
+  padding: 0 1em;
+}
+
+.input {
+  font-size: 1em;
+  width: 3em;
+}
+
+.errorBox {
+  color: red;
+}
