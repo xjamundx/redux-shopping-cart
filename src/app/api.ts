@@ -18,7 +18,8 @@ export type CartItems = { [productID: string]: number };
 export type CheckoutResponse = { success: boolean; error?: string };
 
 export async function checkout(items: CartItems): Promise<CheckoutResponse> {
-  const url = "/checkout-error.json";
+  const modifier = Object.keys(items).length > 0 ? "success" : "error";
+  const url = `/checkout-${modifier}.json`;
   await sleep(500);
   const response = await fetch(url, {
     method: "POST",
