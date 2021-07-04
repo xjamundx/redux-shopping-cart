@@ -22,11 +22,15 @@ const cartSlice = createSlice({
     },
     removeFromCart(state, action: PayloadAction<string>) {
       delete state.items[action.payload];
-    }
+    },
+    updateQuantity(state, action: PayloadAction<{ id: string, quantity: number }>) {
+      const { id, quantity } = action.payload;
+      state.items[id] = quantity;
+    },
   }
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, updateQuantity } = cartSlice.actions;
 export default cartSlice.reducer;
 
 export function getNumItems(state: RootState) {
