@@ -11,11 +11,13 @@ type CheckoutState = "LOADING" | "READY" | "ERROR";
 export interface CartState {
   items: { [productID: string]: number };
   checkoutState: CheckoutState;
+  errorMessage: string;
 }
 
 const initialState: CartState = {
   items: {},
   checkoutState: "READY",
+  errorMessage: "",
 };
 
 export const checkoutCart = createAsyncThunk(
@@ -55,8 +57,9 @@ const cartSlice = createSlice({
     builder.addCase(checkoutCart.fulfilled, (state) => {
       state.checkoutState = "READY";
     });
-    builder.addCase(checkoutCart.rejected, (state) => {
+    builder.addCase(checkoutCart.rejected, (state, action) => {
       state.checkoutState = "ERROR";
+      state.errorMessage = action.error.message || "";
     });
   },
 });
