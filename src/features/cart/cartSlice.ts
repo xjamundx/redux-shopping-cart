@@ -1,4 +1,10 @@
-import { createSlice, createSelector, PayloadAction } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk,
+  createSelector,
+  PayloadAction,
+} from "@reduxjs/toolkit";
+import { checkout, CartItems } from "../../app/api";
 import type { RootState } from "../../app/store";
 
 type CheckoutState = "LOADING" | "READY" | "ERROR";
@@ -11,6 +17,14 @@ const initialState: CartState = {
   items: {},
   checkoutState: "READY",
 };
+
+export const checkoutCart = createAsyncThunk(
+  "cart/checkout",
+  async (items: CartItems) => {
+    const response = await checkout(items);
+    return response;
+  }
+);
 
 const cartSlice = createSlice({
   name: "cart",
@@ -33,6 +47,17 @@ const cartSlice = createSlice({
       const { id, quantity } = action.payload;
       state.items[id] = quantity;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(checkoutCart.pending, (state) => {
+      state.checkoutState = "LOADING";
+    });
+    builder.addCase(checkoutCart.fulfilled, (state) => {
+      state.checkoutState = "READY";
+    });
+    builder.addCase(checkoutCart.rejected, (state) => {
+      state.checkoutState = "ERROR";
+    });
   },
 });
 
