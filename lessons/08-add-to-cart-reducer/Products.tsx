@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useAppSelectorm, useAppDispatch } from "../../app/hooks";
+import React, { useEffect } from "react";
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { receivedProducts } from "./productsSlice";
 import { addToCart } from "../cart/cartSlice";
-import { getProducts, Product } from "../../app/api";
+import { getProducts } from "../../app/api";
 import styles from "./Products.module.css";
 
 export function Products() {

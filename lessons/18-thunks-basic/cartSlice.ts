@@ -45,7 +45,7 @@ const cartSlice = createSlice({
 });
 
 export function checkout() {
-  return function checkoutThunk(dispatch) {
+  return function checkoutThunk(dispatch: AppDispatch) {
     dispatch("cart/checkout/pending")
     setTimeout(function () {
       dispatch("cart/checkout/fulfilled")
