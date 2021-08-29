@@ -45,10 +45,10 @@ const cartSlice = createSlice({
 });
 
 export function checkout() {
-  return function checkoutThunk(dispatch) {
-    dispatch("cart/checkout/pending")
+  return function checkoutThunk(dispatch: AppDispatch) {
+    dispatch({ type: "cart/checkout/pending" })
     setTimeout(function () {
-      dispatch("cart/checkout/fulfilled")
+      dispatch({ type: "cart/checkout/fulfilled" })
     }, 500);
   }
 }
