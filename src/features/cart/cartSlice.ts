@@ -4,7 +4,7 @@ import {
   createSelector,
   PayloadAction,
 } from "@reduxjs/toolkit";
-import { checkout, CartItems } from "../../app/api";
+import { checkout } from "../../app/api";
 import type { RootState } from "../../app/store";
 
 type CheckoutState = "LOADING" | "READY" | "ERROR";
@@ -76,7 +76,6 @@ export const { addToCart, removeFromCart, updateQuantity } = cartSlice.actions;
 export default cartSlice.reducer;
 
 export function getNumItems(state: RootState) {
-  console.log("calling numItems");
   let numItems = 0;
   for (let id in state.cart.items) {
     numItems += state.cart.items[id];
@@ -87,7 +86,6 @@ export function getNumItems(state: RootState) {
 export const getMemoizedNumItems = createSelector(
   (state: RootState) => state.cart.items,
   (items) => {
-    console.log("calling getMemoizedNumItems");
     let numItems = 0;
     for (let id in items) {
       numItems += items[id];
