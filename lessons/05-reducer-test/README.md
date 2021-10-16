@@ -1,9 +1,14 @@
 ## Adding Tests for a Redux Reducer
 
-I have a few courses out now about using Redux Hooks, including [Redux with React Hooks](https://egghead.io/courses/redux-with-react-hooks-8a37) and [Modernizing a Legacy Redux Application with Redux Hooks](https://egghead.io/courses/modernizing-a-legacy-redux-application-with-react-hooks-c528), but redux hooks are only part of the story. They make it easy to connect your components with your redux store, but setting up and maintaining that store is still left up to you. [Redux Toolkit](https://redux-toolkit.js.org/) on the other hand provides some really nice guardrails and simplifies that process. It also includes utilities that improve TypeScript's ability to understand redux.
+This test starts us off with testing a reducer and we do that by importing both the reducer and an associated action creator, which we can use to generate actions to pass back into that reducer.
 
-This course follows the process of bringing redux in to manage the data in a shopping cart application. It focuses on splitting your store into slices, creating reducers and selectors and managing async actions with thunks. Our shopping cart app will allow you to see a dynamic list of products, add items to a cart, and eventually checkout.
+For all of our unit tests here we use `describe` blocks to group them even though they're not strictly required. When using this approach a good way to think about naming your tests is if you construct a sentence starting from the describe block text and then concluding with the test name passed into your `it` function. For example you can read one of these tests as "products reducer should convert the products received to an object".
 
-Follow along by creating this redux shopping cart application with me and then apply what you've learned to your own applications.
+This testing syntax describe/it is loosely referred to as BDD (behavior driven development) and originated with the [R-Spec ruby testing library](https://rspec.info/. Jest also includes a [test()](https://jestjs.io/docs/api#testname-fn-timeout) function, which works the same as `it()`. For asserting behavior jest relies on the powerful [expect](https://jestjs.io/docs/expect) function and its various "matchers".
 
-Thank you so much for watching!
+One thing we use extensively in our tests is the [products.json](https://github.com/xjamundx/redux-shopping-cart/blob/testing/public/products.json) file that we share with our app. In practice, your app likely won't have a products.json file with all of the data. It will more likely  ome from something like an API or a database so you might need to create a file like this just for your tests.
+
+---
+
+If you're just getting started with jest you can check out their [getting started guide](https://jestjs.io/docs/getting-started) or choose from whole slew of [jest lessons on egghead](https://egghead.io/q/jest). Another fantastic resource is Kent C. Dodd's https://testingjavascript.com/ which is a paid course.
+

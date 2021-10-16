@@ -1,9 +1,7 @@
 ## Using Jest in Watch Mode with test.todo to Test a Redux Reducer
 
-I have a few courses out now about using Redux Hooks, including [Redux with React Hooks](https://egghead.io/courses/redux-with-react-hooks-8a37) and [Modernizing a Legacy Redux Application with Redux Hooks](https://egghead.io/courses/modernizing-a-legacy-redux-application-with-react-hooks-c528), but redux hooks are only part of the story. They make it easy to connect your components with your redux store, but setting up and maintaining that store is still left up to you. [Redux Toolkit](https://redux-toolkit.js.org/) on the other hand provides some really nice guardrails and simplifies that process. It also includes utilities that improve TypeScript's ability to understand redux.
+Jest has a [watch mode](https://jestjs.io/docs/cli) that can really speed up test development. It will automatically run your tests as you save your test files. And it has a built-in pattern option to allow you to only focus on tests for a particular file. This approach works well in combination with [test.todo](https://jestjs.io/blog/2019/01/25/jest-24-refreshing-polished-typescript-friendly#testtodo) where you can stub out a number of tests and then code on them until they all pass.
 
-This course follows the process of bringing redux in to manage the data in a shopping cart application. It focuses on splitting your store into slices, creating reducers and selectors and managing async actions with thunks. Our shopping cart app will allow you to see a dynamic list of products, add items to a cart, and eventually checkout.
+Most of what is being done in these tests we've already seen before and it's important to note that I'm doing only the most basic of testing here. For each of these actions it wouldn't be uncommon in your own apps to have 3-6 tests instead of just one.
 
-Follow along by creating this redux shopping cart application with me and then apply what you've learned to your own applications.
-
-Thank you so much for watching!
+It's important to note that `it` and `test` are aliases of one another so `it.todo` and `test.todo` both work seamlessly and are just a matter of preference. Usually when I'm doing unit testing I'll stick with `describe` and `it`, which commonly go together. I'll use `test()`, usually without describe when I'm testing react components with React Testing Library, but that's just my preference.

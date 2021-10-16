@@ -1,9 +1,11 @@
 ## Configuring Code Coverage for TypeScript Files in Jest
 
-I have a few courses out now about using Redux Hooks, including [Redux with React Hooks](https://egghead.io/courses/redux-with-react-hooks-8a37) and [Modernizing a Legacy Redux Application with Redux Hooks](https://egghead.io/courses/modernizing-a-legacy-redux-application-with-react-hooks-c528), but redux hooks are only part of the story. They make it easy to connect your components with your redux store, but setting up and maintaining that store is still left up to you. [Redux Toolkit](https://redux-toolkit.js.org/) on the other hand provides some really nice guardrails and simplifies that process. It also includes utilities that improve TypeScript's ability to understand redux.
+Code coverage is an important part of any test setup. One of the jest framework's innovations is built-in test coverage support. In this lesson I demonstrate using the [collectCoverageFrom](https://jestjs.io/docs/configuration#collectcoveragefrom-array) configuration option to improve jest's coverage support for TypeScript files and then demonstrate using `npx jest --coverage` to run code coverage as well as `npm test -- --coverage`, which does the same thing.
 
-This course follows the process of bringing redux in to manage the data in a shopping cart application. It focuses on splitting your store into slices, creating reducers and selectors and managing async actions with thunks. Our shopping cart app will allow you to see a dynamic list of products, add items to a cart, and eventually checkout.
+At the end I briefly mention the [collectCoverage](https://jestjs.io/docs/configuration#collectcoverage-boolean) flag which seems like you'd want to always just have on, but in practice is annoying. That's because coverage takes several extra to process and I rarely need my code coverage run, so it just makes the testing feedback loop a lot slower. For a build-only config it might make sense to leave on.
 
-Follow along by creating this redux shopping cart application with me and then apply what you've learned to your own applications.
+---
 
-Thank you so much for watching!
+There's a [pretty good question on stackoverflow](https://stackoverflow.com/questions/43046885/what-does-do-when-running-an-npm-command) that covers using `--` with `npm test` that you might want to check out.
+
+Here's also an explanation of how [npx differs from npm](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).

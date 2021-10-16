@@ -11,6 +11,12 @@ npm install
 npm run dev
 ```
 
+## Lessons
+
+The `lessons/` folder contains a unique folder for each lesson including a README with a description of that lesson and any files that were modified as part of that lesson.
+
+The final state of the application can also be found in the `testing-final` branch.
+
 ## Technologies
 
 - [Vite](https://vitejs.dev/)

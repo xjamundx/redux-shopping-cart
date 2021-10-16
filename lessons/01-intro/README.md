@@ -1,9 +1,15 @@
-## Confidently Testing Redux Applications with Jest & TypeScript
+## Intro to Confidently Testing Redux Applications with Jest & TypeScript
 
-I have a few courses out now about using Redux Hooks, including [Redux with React Hooks](https://egghead.io/courses/redux-with-react-hooks-8a37) and [Modernizing a Legacy Redux Application with Redux Hooks](https://egghead.io/courses/modernizing-a-legacy-redux-application-with-react-hooks-c528), but redux hooks are only part of the story. They make it easy to connect your components with your redux store, but setting up and maintaining that store is still left up to you. [Redux Toolkit](https://redux-toolkit.js.org/) on the other hand provides some really nice guardrails and simplifies that process. It also includes utilities that improve TypeScript's ability to understand redux.
+Best practices for building & testing redux applications have changed dramatically over time. This course aims to be a comprehensive and up-to-date resource for those seeking to confidently test their redux apps. Whether you're just getting started or want to improve on your existing testing strategy, there will be something in this course for you.
 
-This course follows the process of bringing redux in to manage the data in a shopping cart application. It focuses on splitting your store into slices, creating reducers and selectors and managing async actions with thunks. Our shopping cart app will allow you to see a dynamic list of products, add items to a cart, and eventually checkout.
+This first few lessons of this course look at how to add jest to an existing react/redux application that was built on top of [vite](https://vitejs.dev/). We cover basic functionality like using `npm test` vs `npx jest` and generating and using [code coverage](https://jestjs.io/docs/cli#--coverageboolean) to inform our testing strategy.
 
-Follow along by creating this redux shopping cart application with me and then apply what you've learned to your own applications.
+The next 10 or so lessons cover the specifics of unit testing the redux code in our application. We'll go over how to test reducers, selectors and thunks. As part of this we'll touch on mocking APIs and using [Redux Mock Store](https://github.com/reduxjs/redux-mock-store) as well as running actions through our applications' actual reducers to broaden our test coverage.
 
-Thank you so much for watching!
+In the final part of this course we'll look at how we can test our redux connected react components using the various utilities that come with the [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/). We'll cover simulating various kinds of user input with the [User Event Module](https://testing-library.com/docs/ecosystem-user-event), populating our redux store with test data, using [jest spies](https://jestjs.io/docs/jest-object#jestspyonobject-methodname), how to wait for asynchronous tasks to complete, and several approaches for finding & asserting that visual elements exist on the page.
+
+This course is built on top of content that was created for the [Modern Redux with RTK and TypeScript](https://app.egghead.io/playlists/modern-redux-with-redux-toolkit-rtk-and-typescript-64f243c8) course and I highly recommend you start there if you haven't completed it already. It does expect a *basic* familiarity with react, redux and jest. TypeScript is used in these lessons, but is not a major focus and hopefully won't distract you too much if you prefer plain JavaScript. 
+
+No matter your experience level with redux and testing react applications, I'm confident your abilities will level up as you watch this course and follow along with the examples.
+
+Thank you!

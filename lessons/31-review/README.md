@@ -1,0 +1,3 @@
+## A Comprehensive Example of Testing Redux Connected React Components
+
+For this lesson we combine a number of techniques we've learned already. Those include [getAllByRole()](https://testing-library.com/docs/queries/about/), using [jest spies](https://jestjs.io/docs/jest-object#jestspyonobject-methodname), [getByRole](https://testing-library.com/docs/queries/about/) with a filter on the [accessible name](https://webaim.org/articles/label-name/#computation), and [waitFor](https://testing-library.com/docs/dom-testing-library/api-async/#waitfor).
