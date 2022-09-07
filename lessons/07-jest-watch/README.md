@@ -1,7 +1,0 @@
-## Using Jest in Watch Mode with test.todo to Test a Redux Reducer
-
-Jest has a [watch mode](https://jestjs.io/docs/cli) that can really speed up test development. It will automatically run your tests as you save your test files. And it has a built-in pattern option to allow you to only focus on tests for a particular file. This approach works well in combination with [test.todo](https://jestjs.io/blog/2019/01/25/jest-24-refreshing-polished-typescript-friendly#testtodo) where you can stub out a number of tests and then code on them until they all pass.
-
-Most of what is being done in these tests we've already seen before and it's important to note that I'm doing only the most basic of testing here. For each of these actions it wouldn't be uncommon in your own apps to have 3-6 tests instead of just one.
-
-It's important to note that `it` and `test` are aliases of one another so `it.todo` and `test.todo` both work seamlessly and are just a matter of preference. Usually when I'm doing unit testing I'll stick with `describe` and `it`, which commonly go together. I'll use `test()`, usually without describe when I'm testing react components with React Testing Library, but that's just my preference.
